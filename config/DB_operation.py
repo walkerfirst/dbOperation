@@ -1,17 +1,18 @@
-from config.database import db_record
+from config.config import conn
 import pandas as pd
 
 class DatabaseTools(object):
     """database 的操作类"""
     def __init__(self):
         # self.table = tablename
-        self.db = db_record
+        self.db = conn
         self.cursor = self.db.cursor()
 
     def execute_sql(self,sql):
         self.cursor.execute(sql)
+        self.cursor.fetchone()
         self.db.commit()
-        self.db.close()
+        # self.cursor.close()
 
     def get_tables(self):
         sql_all_tables = "SELECT name FROM sqlite_master WHERE type='table';"
@@ -59,9 +60,20 @@ class DatabaseTools(object):
         else:
             print('table is not exited')
 
-    def read_db(self, sql):
+    def pd_read_db(self, sql):
         df = pd.read_sql(sql, self.db)
         return df
+
+    def read_db(self,sql):
+        # 执行 SQL 查询语句
+        self.cursor.execute(sql)
+
+        # 获取查询结果
+        rows = self.cursor.fetchall()
+        # 关闭连接
+        # self.cursor.close()
+        # self.db.close()
+        return rows
 
 
 if __name__ == '__main__':
