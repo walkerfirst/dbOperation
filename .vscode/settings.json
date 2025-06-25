@@ -1,0 +1,9 @@
+{
+    "terminal.integrated.env.windows": {
+        "LANG": "en_US.UTF-8"
+    },
+    "terminal.integrated.shellArgs.windows": [
+        "-NoExit", "-Command", "chcp 65001"
+    ]
+    
+}

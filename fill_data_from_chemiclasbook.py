@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 from config.DB_operation import DatabaseTools
-# import requests
+import requests
 
 def get_data(url, x):
     # 获取网页的table，得到一个list，如果中文乱码需要解码
@@ -17,10 +17,11 @@ def get_data(url, x):
 
 def process_data(keyword):
     # 测试一下其他网站
+
     url = r"https://www.chemicalbook.com/Search.aspx?keyword={1}"
     url = url.replace('{1}', str(keyword))
     url = url.replace(" ", "%20")
-    # print(url)
+    print(url)
     data = get_data(url, x=0)
     # print(type(data))
     s = data[0].loc[0]
@@ -88,5 +89,12 @@ def fill_cas():
                 print(e)
                 break
 
+def test():
+    print('test')
+    keyword = '358-23-6'
+    cas,chinese = process_data(keyword)
+    print(cas,chinese)
+
 if __name__ == '__main__':
-    fill_cas()
+    print('start')
+    test()
