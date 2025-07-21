@@ -85,17 +85,17 @@ def get_columns_name(tablename):
     return column_name_list
 
 if __name__ == '__main__':
-    # sql = "SELECT code,数量合计,平均成本 FROM 持仓概览;"
+    sql = "select 品名,CAS,订单号,日期,快递 from 跟单进程 where 订单号 =577;"
     # columns = ['code', 'qty', 'cost2']
-    # data = read_access_db(sql)
-    # print(data)
+    data = read_access_db(sql)
+    print(data)
 
 
-    tables = get_table_name()
-    print(tables)
-    views = get_view_name()
-    print(views)
+    # tables = get_table_name()
+    # print(tables)
+    # views = get_view_name()
+    # print(views)
 
-    # 获取表的字段名
-    columns_names = get_columns_name(tables[0])
-    print(columns_names)
+    # # # 获取表的字段名
+    # columns_names = get_columns_name('跟单进程')
+    # print(columns_names)

@@ -1,3 +1,6 @@
-db/chemical.accdb
-db/chemicals.db
+
 db/*
+*.pyc
+.venv/
+.idea/
+*.pyo
